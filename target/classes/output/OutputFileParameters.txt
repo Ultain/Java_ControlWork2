@@ -1,0 +1,6 @@
+Абсолютный путь: C:\ControlWork2\src\main\resources\input\Shantaram.txt
+Имя файла: Shantaram.txt
+Просмотр файла: true
+Чтение файла: true
+Изменение файла: true
+Скрытый файл: false
