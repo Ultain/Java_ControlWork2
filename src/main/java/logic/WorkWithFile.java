@@ -73,6 +73,8 @@ public class WorkWithFile {
             //if (Character.UnicodeBlock.of(file).equals(Character.UnicodeBlock.CYRILLIC)) {
             //    return ;
             //}
+    // Добавляю комментарий для создания комментария
+        // Добавляю комментарий для создания комментария еще раз
 
         //}
 
