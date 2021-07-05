@@ -3,14 +3,16 @@ package logic;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public class WorkWithFile {
 
-    private void writeToFile(File file, String text){
-        try (OutputStream os = new FileOutputStream(file)) {
-            os.write(text.getBytes());
+    private void writeToFile(String path){
+        try (OutputStream os = new FileOutputStream("C:\\ControlWork2\\src\\main\\resources\\output\\OutputFileParameters.txt")) {
+
+
             os.flush();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -19,7 +21,13 @@ public class WorkWithFile {
         }
     }
 
-    private void readFromFile(File file){
+    private void writeString(File outputString, String text){
+
+
+
+    }
+
+    private String readFromFile(File inputFile){
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\ControlWork2\\src\\main\\resources\\input\\Shantaram.txt"), "utf-8"))){
             int buff;
@@ -32,7 +40,9 @@ public class WorkWithFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return sb.toString();
     }
+
 
     private void writeToFileParameters(File outputFileParameters, File inputFile){
         try (OutputStream os = new FileOutputStream(outputFileParameters)) {
@@ -42,9 +52,12 @@ public class WorkWithFile {
             os.write(("Чтение файла: " + inputFile.canRead() + "\n").getBytes(StandardCharsets.UTF_8));
             os.write(("Изменение файла: " + inputFile.canWrite() + "\n").getBytes(StandardCharsets.UTF_8));
             os.write(("Скрытый файл: " + inputFile.isHidden() + "\n").getBytes(StandardCharsets.UTF_8));
+            os.write(("Размер файла: " + inputFile.length()/1024 + "KB" + "\n").getBytes(StandardCharsets.UTF_8));
 
 
             os.flush();
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -52,13 +65,29 @@ public class WorkWithFile {
         }
     }
 
+    //String text;
 
-    public static void main(String[] args) throws UnsupportedEncodingException, IOException {
+    /*private void writeToFileSplits(File outputString, File inputFile) {
+        try {
+
+            FileWriter fw = new FileWriter(outputString);
+            fw.write(inputFile.toString().split("/.!?").length);
+            fw.close();
+
+        } catch (IOException iox) {
+
+            iox.printStackTrace();
+        }
+    }*/
+
+
+    public static void main(String[] args) {
 
         WorkWithFile wwFile = new WorkWithFile();
 
         File inputFile = new File("C:\\ControlWork2\\src\\main\\resources\\input\\Shantaram.txt");
         File outputFileParameters = new File("C:\\ControlWork2\\src\\main\\resources\\output\\OutputFileParameters.txt");
+        File outputStringParameters = new File("C:\\ControlWork2\\src\\main\\resources\\output\\OutputStringParameters.txt");
 
 
         System.out.println("write file");
@@ -67,14 +96,35 @@ public class WorkWithFile {
         System.out.println("read file");
         wwFile.readFromFile(inputFile);
 
+        String text = wwFile.readFromFile(inputFile);
+
+        //wwFile.writeString(outputString,text);
+
+
+        try {
+
+            FileWriter fw = new FileWriter(outputStringParameters);
+
+            fw.write("Предложений в файле: " + Integer.toString(text.split("[.!?]").length) + "\n");
+            fw.write("Слов в файле: " + Integer.toString(text.split(" ").length));
+
+            fw.close();
+
+        } catch (IOException iox) {
+            iox.printStackTrace();
+        }
+
+
+        //Content content = new Content(text.split("/.!?").length, text.split(" ").length, 0, 0, 0, 0);
+
+
         //for (int i = 0; i < file.length(); i++) {
 
             //if (file.equals());
             //if (Character.UnicodeBlock.of(file).equals(Character.UnicodeBlock.CYRILLIC)) {
             //    return ;
             //}
-    // Добавляю комментарий для создания комментария
-        // Добавляю комментарий для создания комментария еще раз
+
 
         //}
 
