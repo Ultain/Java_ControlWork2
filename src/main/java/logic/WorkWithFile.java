@@ -6,6 +6,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class WorkWithFile {
 
@@ -21,13 +26,7 @@ public class WorkWithFile {
         }
     }
 
-    private void writeString(File outputString, String text){
-
-
-
-    }
-
-    private String readFromFile(File inputFile){
+     private String readFromFile(File inputFile){
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\ControlWork2\\src\\main\\resources\\input\\Shantaram.txt"), "utf-8"))){
             int buff;
@@ -43,7 +42,6 @@ public class WorkWithFile {
         return sb.toString();
     }
 
-
     private void writeToFileParameters(File outputFileParameters, File inputFile){
         try (OutputStream os = new FileOutputStream(outputFileParameters)) {
             os.write(("Абсолютный путь: " + inputFile.getAbsolutePath() + "\n").getBytes(StandardCharsets.UTF_8));
@@ -54,9 +52,7 @@ public class WorkWithFile {
             os.write(("Скрытый файл: " + inputFile.isHidden() + "\n").getBytes(StandardCharsets.UTF_8));
             os.write(("Размер файла: " + inputFile.length()/1024 + "KB" + "\n").getBytes(StandardCharsets.UTF_8));
 
-
             os.flush();
-
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -64,22 +60,6 @@ public class WorkWithFile {
             e.printStackTrace();
         }
     }
-
-    //String text;
-
-    /*private void writeToFileSplits(File outputString, File inputFile) {
-        try {
-
-            FileWriter fw = new FileWriter(outputString);
-            fw.write(inputFile.toString().split("/.!?").length);
-            fw.close();
-
-        } catch (IOException iox) {
-
-            iox.printStackTrace();
-        }
-    }*/
-
 
     public static void main(String[] args) {
 
@@ -89,7 +69,6 @@ public class WorkWithFile {
         File outputFileParameters = new File("C:\\ControlWork2\\src\\main\\resources\\output\\OutputFileParameters.txt");
         File outputStringParameters = new File("C:\\ControlWork2\\src\\main\\resources\\output\\OutputStringParameters.txt");
 
-
         System.out.println("write file");
         wwFile.writeToFileParameters(outputFileParameters, inputFile);
 
@@ -98,15 +77,36 @@ public class WorkWithFile {
 
         String text = wwFile.readFromFile(inputFile);
 
-        //wwFile.writeString(outputString,text);
+        /*long countSpaces = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.contains(" ")){
+                countSpaces++;
+            }
+        }
 
+        // Знаки препинания - [ . , ; : ... ! ? - " ( ) ]
+
+        List listSymbols = Arrays.asList(".", ",", ";", ":", "...", "!", "?", "-", "\"", "(", ")");
+        Pattern pattern = Pattern.compile("[ ,.!?]");
+
+        long countSymbols = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.contains("!")){
+                //System.out.println(text.charAt(i));
+                countSymbols++;
+
+            }
+        }
+        System.out.println(countSymbols);
+        System.out.println(text.length());*/
 
         try {
 
             FileWriter fw = new FileWriter(outputStringParameters);
 
             fw.write("Предложений в файле: " + Integer.toString(text.split("[.!?]").length) + "\n");
-            fw.write("Слов в файле: " + Integer.toString(text.split(" ").length));
+            fw.write("Слов в файле: " + Integer.toString(text.split(" ").length) + "\n");
+            //fw.write("Количество пробелов: " + countSpaces + "\n");
 
             fw.close();
 
@@ -128,8 +128,8 @@ public class WorkWithFile {
 
         //}
 
-        /*String text = "Hello, меня зовут Дима";
-        ArrayList cyrillicArray = new ArrayList(Arrays.asList("м, н, з"));
+
+        /*ArrayList cyrillicArray = new ArrayList(Arrays.asList("м, н, з"));
         for (int i = 0; i < file.length(); i++) {
             for (int j = 0; j < cyrillicArray.size(); j++) {
                 if (text.contains((CharSequence) cyrillicArray.get(i))){
