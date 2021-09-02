@@ -1,4 +1,4 @@
-Абсолютный путь: C:\ControlWork2\src\main\resources\input\Shantaram.txt
+Абсолютный путь: C:\Java projects\ControlWork2\src\main\resources\input\Shantaram.txt
 Имя файла: Shantaram.txt
 Просмотр файла: true
 Чтение файла: true

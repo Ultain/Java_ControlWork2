@@ -15,8 +15,7 @@ import java.util.regex.Pattern;
 public class WorkWithFile {
 
     private void writeToFile(String path){
-        try (OutputStream os = new FileOutputStream("C:\\ControlWork2\\src\\main\\resources\\output\\OutputFileParameters.txt")) {
-
+        try (OutputStream os = new FileOutputStream("src/main/resources/output/OutputFileParameters.txt")) {
 
             os.flush();
         } catch (FileNotFoundException e) {
@@ -28,7 +27,8 @@ public class WorkWithFile {
 
      private String readFromFile(File inputFile){
         StringBuilder sb = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\ControlWork2\\src\\main\\resources\\input\\Shantaram.txt"), "utf-8"))){
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream
+                ("src/main/resources/input/Shantaram.txt"), "utf-8"))){
             int buff;
             while((buff =br.read())>-1){
                 sb.append((char)buff) ;
@@ -65,9 +65,9 @@ public class WorkWithFile {
 
         WorkWithFile wwFile = new WorkWithFile();
 
-        File inputFile = new File("C:\\ControlWork2\\src\\main\\resources\\input\\Shantaram.txt");
-        File outputFileParameters = new File("C:\\ControlWork2\\src\\main\\resources\\output\\OutputFileParameters.txt");
-        File outputStringParameters = new File("C:\\ControlWork2\\src\\main\\resources\\output\\OutputStringParameters.txt");
+        File inputFile = new File("src/main/resources/input/Shantaram.txt");
+        File outputFileParameters = new File("src/main/resources/output/OutputFileParameters.txt");
+        File outputStringParameters = new File("src/main/resources/output/OutputStringParameters.txt");
 
         System.out.println("write file");
         wwFile.writeToFileParameters(outputFileParameters, inputFile);
@@ -94,7 +94,6 @@ public class WorkWithFile {
             if (text.contains("!")){
                 //System.out.println(text.charAt(i));
                 countSymbols++;
-
             }
         }
         System.out.println(countSymbols);
@@ -114,9 +113,7 @@ public class WorkWithFile {
             iox.printStackTrace();
         }
 
-
         //Content content = new Content(text.split("/.!?").length, text.split(" ").length, 0, 0, 0, 0);
-
 
         //for (int i = 0; i < file.length(); i++) {
 
@@ -125,9 +122,7 @@ public class WorkWithFile {
             //    return ;
             //}
 
-
         //}
-
 
         /*ArrayList cyrillicArray = new ArrayList(Arrays.asList("м, н, з"));
         for (int i = 0; i < file.length(); i++) {
@@ -137,10 +132,6 @@ public class WorkWithFile {
                 }
             }
         }*/
-
-
-        
-        
 
     }
 
