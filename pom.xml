@@ -33,6 +33,13 @@
             <artifactId>selenium-api</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -40,6 +47,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <selenium.version>3.14.0</selenium.version>
+        <testNG.version>6.14.3</testNG.version>
     </properties>
 
 </project>
